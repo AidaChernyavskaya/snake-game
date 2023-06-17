@@ -8,10 +8,13 @@ let yDirection = 0;
 
 let headX = 15;
 let headY = 15;
+let foodX = 5;
+let foodY = 5;
 
 const drawGame = () => {
     clearScreen();
     drawSnake();
+    drawFood();
     changeSnakePosition();
 
     setTimeout(drawGame, 1000/speed);
@@ -20,6 +23,11 @@ const drawGame = () => {
 const drawSnake = () => {
     context.fillStyle = 'midnightblue';
     context.fillRect(headX * tileSize, headY * tileSize, tileCount, tileCount);
+}
+
+const drawFood = () => {
+    context.fillStyle = 'red';
+    context.fillRect(foodX * tileSize, foodY * tileSize, tileCount, tileCount);
 }
 
 const clearScreen = () => {
