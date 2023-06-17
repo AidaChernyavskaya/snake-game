@@ -8,8 +8,8 @@ let yDirection = 0;
 
 let headX = 10;
 let headY = 10;
-let foodX = 5;
-let foodY = 5;
+let foodX = Math.floor(Math.random() * 20);
+let foodY = Math.floor(Math.random() * 20);
 
 const snakeParts = [];
 let tailLength = 2;
