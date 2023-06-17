@@ -24,13 +24,17 @@ class snakePart {
 }
 
 const drawGame = () => {
+    changeSnakePosition();
+
+    let result = isGameOver();
+    if (result) {return;}
+
     clearScreen();
 
     drawSnake();
     drawFood();
     drawScore();
 
-    changeSnakePosition();
     checkCollision(tileCount - 10);
 
     setTimeout(drawGame, 1000/speed);
@@ -79,6 +83,27 @@ const checkCollision = (max) => {
         tailLength++;
         score++;
     }
+}
+
+const isGameOver = () => {
+    let gameOver = false;
+    if (yDirection === 0 && xDirection === 0) {return false}
+    if (headX < 0 || headY < 0 || headX === tileCount - 10 || headY === tileCount - 10) {gameOver = true}
+
+    for (let i = 0; i < snakeParts.length; i++){
+        let part = snakeParts[i];
+        if (part.x === headX && part.y === headY){
+            gameOver = true;
+            break;
+        }
+    }
+
+    if (gameOver) {
+        context.fillStyle = 'black';
+        context.font = '48px sans-serif';
+        context.fillText('Конец игры!', canvas.clientWidth / 4, canvas.clientHeight / 2)
+    }
+    return gameOver;
 }
 
 const keyDown = (event) => {
