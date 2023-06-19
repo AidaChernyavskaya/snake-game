@@ -15,7 +15,9 @@ const snakeParts = [];
 let tailLength = 2;
 
 let score = 0;
+let highScore = 2;
 let currentScoreElem = document.getElementById('current_score');
+let highScoreElem = document.getElementById('high_score');
 
 class snakePart {
     constructor(x, y) {
@@ -34,7 +36,8 @@ const drawGame = () => {
 
     drawSnake();
     drawFood();
-    drawCurrentScore(currentScoreElem);
+    drawCurrentScore();
+    drawHighScore();
 
     checkCollision(tileCount - 10);
 
@@ -61,8 +64,12 @@ const drawFood = () => {
     context.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
 }
 
-const drawCurrentScore = (currentScoreElem) => {
+const drawCurrentScore = () => {
     currentScoreElem.innerHTML = String(score);
+}
+
+const drawHighScore = () => {
+    score > highScore ? highScoreElem.innerHTML = String(score) : highScoreElem.innerHTML = String(highScore);
 }
 
 const clearScreen = () => {
