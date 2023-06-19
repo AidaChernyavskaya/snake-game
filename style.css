@@ -15,9 +15,21 @@ body{
 }
 
 canvas{
-    border: .1rem solid black;
+    border: .1rem solid teal;
+    border-radius: .2rem;
 }
 
 .wrapper{
     margin-top: 3rem;
+}
+
+.scores{
+    padding: 1rem;
+    border-radius: .2rem;
+    background: #e7e7e7;
+}
+
+.current_score{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 1.6rem;
 }

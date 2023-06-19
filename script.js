@@ -8,13 +8,14 @@ let yDirection = 0;
 
 let headX = 10;
 let headY = 10;
-let foodX = Math.floor(Math.random() * 20);
-let foodY = Math.floor(Math.random() * 20);
+let foodX = 5;
+let foodY = 5;
 
 const snakeParts = [];
 let tailLength = 2;
 
 let score = 0;
+let currentScoreElem = document.getElementById('current_score');
 
 class snakePart {
     constructor(x, y) {
@@ -33,7 +34,7 @@ const drawGame = () => {
 
     drawSnake();
     drawFood();
-    drawScore();
+    drawCurrentScore(currentScoreElem);
 
     checkCollision(tileCount - 10);
 
@@ -60,10 +61,8 @@ const drawFood = () => {
     context.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
 }
 
-const drawScore = () => {
-    context.fillStyle = 'black';
-    context.font = '14px sans-serif';
-    context.fillText('Счет: ' + score, canvas.clientWidth - 70, 20);
+const drawCurrentScore = (currentScoreElem) => {
+    currentScoreElem.innerHTML = String(score);
 }
 
 const clearScreen = () => {
