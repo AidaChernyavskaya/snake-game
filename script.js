@@ -8,10 +8,13 @@ let yDirection = 0;
 
 let headX = 10;
 let headY = 10;
-let foodX = 5;
-let foodY = 5;
+
 const foodImg = new Image();
 foodImg.src = 'images/apple.svg';
+let food = {
+    x: 5,
+    y: 5
+};
 
 const snakeParts = [];
 let tailLength = 2;
@@ -62,9 +65,7 @@ const drawSnake = () => {
 }
 
 const drawFood = () => {
-    context.drawImage(foodImg, foodX * tileCount, foodY * tileCount, tileSize, tileSize);
-    // context.fillStyle = 'red';
-    // context.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
+    context.drawImage(foodImg, food.x * tileCount, food.y * tileCount, tileSize, tileSize);
 }
 
 const drawCurrentScore = () => {
@@ -95,9 +96,9 @@ const changeSnakePosition = () => {
 }
 
 const checkCollision = (max) => {
-    if (foodX === headX && foodY === headY){
-        foodX = Math.floor(Math.random() * max);
-        foodY = Math.floor(Math.random() * max);
+    if (food.x === headX && food.y === headY){
+        food.x = Math.floor(Math.random() * max);
+        food.y = Math.floor(Math.random() * max);
         tailLength++;
         score++;
     }
