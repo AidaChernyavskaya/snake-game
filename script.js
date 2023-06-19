@@ -69,7 +69,16 @@ const drawCurrentScore = () => {
 }
 
 const drawHighScore = () => {
-    score > highScore ? highScoreElem.innerHTML = String(score) : highScoreElem.innerHTML = String(highScore);
+    let highScore = localStorage.getItem('highScore');
+    if (highScore === null) {
+        localStorage.setItem('highScore', '0');
+    }
+    if (score > Number(highScore)) {
+        highScoreElem.innerHTML = String(score);
+        localStorage.setItem('highScore', JSON.stringify(score));
+    } else {
+        highScoreElem.innerHTML = highScore;
+    }
 }
 
 const clearScreen = () => {
