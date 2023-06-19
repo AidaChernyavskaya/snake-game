@@ -10,6 +10,8 @@ let headX = 10;
 let headY = 10;
 let foodX = 5;
 let foodY = 5;
+const foodImg = new Image();
+foodImg.src = 'images/apple.svg';
 
 const snakeParts = [];
 let tailLength = 2;
@@ -60,8 +62,9 @@ const drawSnake = () => {
 }
 
 const drawFood = () => {
-    context.fillStyle = 'red';
-    context.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
+    context.drawImage(foodImg, foodX * tileCount, foodY * tileCount, tileSize, tileSize);
+    // context.fillStyle = 'red';
+    // context.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
 }
 
 const drawCurrentScore = () => {
