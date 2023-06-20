@@ -86,8 +86,15 @@ const drawHighScore = () => {
 }
 
 const clearScreen = () => {
-    context.fillStyle = 'palegreen';
-    context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight)
+    let flag = true;
+    for (let i = 0; i < 30; i++) {
+        flag = !flag
+        for (let j = 0; j < 30; j++) {
+            flag ? context.fillStyle = 'rgb(170,215,81)' : context.fillStyle = 'rgb(162,209,73)';
+            context.fillRect(j * 30, i * 30, 30, 30);
+            flag = !flag
+        }
+    }
 }
 
 const changeSnakePosition = () => {
