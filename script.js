@@ -18,7 +18,7 @@ let food = {
 };
 
 const spriteImg = new Image();
-spriteImg.src = 'images/snake-graphics.png';
+spriteImg.src = 'images/blue-snake.png';
 
 const snakeParts = [];
 let tailLength = 2;
