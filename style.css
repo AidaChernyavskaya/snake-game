@@ -31,4 +31,53 @@ canvas{
     font-size: 1.6rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.current_score{
+    width: 60%;
+}
+
+.button{
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: .3rem;
+    background: none;
+}
+
+.button__icon{
+    width: 2rem;
+    height: 2rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content{
+    background: #e7e7e7;
+    width: 20%;
+    margin: 20rem auto 0 auto;
+    border-radius: .2rem;
+}
+
+.close{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close__background{
+    background: lightgray;
+    padding: .5rem 1rem;
+    border-radius: .2rem;
 }
