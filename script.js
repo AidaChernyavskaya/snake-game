@@ -20,6 +20,9 @@ let food = {
 const spriteImg = new Image();
 spriteImg.src = 'images/blue-snake.png';
 
+const gameOverSound = new Audio('sounds/game-over.mp3');
+const biteSound = new Audio('sounds/bite.mp3');
+
 const snakeParts = [];
 let tailLength = 2;
 
@@ -153,6 +156,7 @@ const changeSnakePosition = () => {
 
 const checkCollision = (max) => {
     if (food.x === headX && food.y === headY){
+        biteSound.play();
         food.x = Math.floor(Math.random() * max);
         food.y = Math.floor(Math.random() * max);
         tailLength++;
@@ -174,6 +178,7 @@ const isGameOver = () => {
     }
 
     if (gameOver) {
+        gameOverSound.play();
         context.fillStyle = 'black';
         context.font = '48px sans-serif';
         context.fillText('Конец игры!', canvas.clientWidth / 4, canvas.clientHeight / 2)
