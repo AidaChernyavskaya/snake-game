@@ -8,7 +8,7 @@ if (!speed) {
 let tileCount = 30;
 let tileSize = canvas.clientWidth/tileCount + 10;
 let xDirection = 0;
-let yDirection = 0;
+let yDirection = -1;
 let direction = '';
 
 let headX = 10;
