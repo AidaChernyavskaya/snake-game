@@ -23,7 +23,19 @@
                     </button>
                 </div>
 
-                <p>Привет, я всплывающее окно!</p>
+                <div class="settings">
+                    <div class="setting">
+                        <p>Сложность:</p>
+                        <select id="difficulty">
+                            <option value="6">Легкая</option>
+                            <option value="8" selected>Средняя</option>
+                            <option value="10">Сложная</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="save__button">
+                    <button class="save" id="save">Сохранить изменения</button>
+                </div>
             </div>
         </div>
         <canvas id="game" width="600" height="600"></canvas>

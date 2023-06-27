@@ -1,6 +1,10 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
-let speed = 6;
+let speed = parseInt(localStorage.getItem('difficulty'));
+if (!speed) {
+    localStorage.setItem('difficulty', '8');
+    speed = 8;
+}
 let tileCount = 30;
 let tileSize = canvas.clientWidth/tileCount + 10;
 let xDirection = 0;
@@ -229,6 +233,23 @@ const openModal = () => {
     };
 }
 
+const saveChanges = () => {
+    let button = document.getElementById('save');
+    let difficultyElem = document.getElementById('difficulty');
+    button.onclick = () => {
+        let difficulty = difficultyElem.value;
+        localStorage.setItem('difficulty', difficulty);
+        speed = parseInt(difficulty);
+    }
+}
+
 drawGame();
 document.body.addEventListener('keydown', keyDown);
 openModal();
+saveChanges();
+
+document.addEventListener('DOMContentLoaded', function(){
+    let difficulty = localStorage.getItem('difficulty');
+    let difficultyElem = document.getElementById('difficulty');
+    difficultyElem.value = difficulty;
+});

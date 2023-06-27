@@ -81,3 +81,48 @@ canvas{
     padding: .5rem 1rem;
     border-radius: .2rem;
 }
+
+.settings{
+    padding: 2rem;
+}
+
+.setting{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting p{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 1.4rem;
+}
+
+select{
+    padding: .4rem;
+    border-radius: .2rem;
+}
+
+.save{
+    padding: 1rem;
+    border: none;
+    border-radius: .2rem;
+    background: lightgray;
+    font-size: 1.4rem;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.save__button{
+    padding: 0 2rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.save:hover{
+    transform: translateY(-.3rem);
+    background: #9b9b9b;
+}
+
+.save:active{
+    transform: translateY(-.1rem);
+}
