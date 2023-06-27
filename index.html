@@ -10,7 +10,7 @@
         <div class="scores">
             <p class="current_score">Счёт: <span id="current_score">0</span></p>
             <p class="high_score">Лучший результат: <span id="high_score">0</span></p>
-            <button class="button" id="openModal">
+            <button class="button settings__icon" id="openModal">
                 <input class="button__icon" type="image" src="images/settings.png" alt="settings button">
             </button>
         </div>
@@ -49,6 +49,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="restart" id="restart">
+            <button class="restart__button" id="restart_button">Начать заново</button>
+        </div>
+
         <canvas id="game" width="600" height="600"></canvas>
     </div>
     <script src="script.js"></script>

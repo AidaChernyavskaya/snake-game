@@ -43,6 +43,7 @@ let tailLength = 2;
 let score = 0;
 let currentScoreElem = document.getElementById('current_score');
 let highScoreElem = document.getElementById('high_score');
+let reloadFlag = false;
 
 class snakePart {
     constructor(x, y) {
@@ -213,31 +214,42 @@ const isGameOver = () => {
         gameOverSound.play();
         context.fillStyle = 'black';
         context.font = '48px sans-serif';
-        context.fillText('Конец игры!', canvas.clientWidth / 4, canvas.clientHeight / 2)
+        context.fillText('Конец игры!', canvas.clientWidth / 3.7, canvas.clientHeight / 2);
+
+        let restartElem = document.getElementById('restart');
+        let restartButton = document.getElementById('restart_button');
+        restartElem.style.display = 'block';
+        reloadFlag = true;
+        restartButton.onclick = () => {
+            window.location.reload();
+        }
     }
     return gameOver;
 }
 
 const keyDown = (event) => {
-    if (event.key === 'ArrowUp' && yDirection !== 1) {
+    if ((event.key === 'ArrowUp' || event.key === 'w') && yDirection !== 1) {
         xDirection = 0;
         yDirection = -1;
         direction = 'up';
     }
-    if (event.key === 'ArrowRight' && xDirection !== -1) {
+    if ((event.key === 'ArrowRight' || event.key === 'd') && xDirection !== -1) {
         xDirection = 1;
         yDirection = 0;
         direction = 'right';
     }
-    if (event.key === 'ArrowDown' && yDirection !== -1) {
+    if ((event.key === 'ArrowDown' || event.key === 's') && yDirection !== -1) {
         xDirection = 0;
         yDirection = 1;
         direction = 'down';
     }
-    if (event.key === 'ArrowLeft' && xDirection !== 1) {
+    if ((event.key === 'ArrowLeft' || event.key === 'a') && xDirection !== 1) {
         xDirection = -1;
         yDirection = 0;
         direction = 'left';
+    }
+    if(event.code === 'Space' && reloadFlag){
+        window.location.reload();
     }
 }
 
