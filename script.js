@@ -129,13 +129,15 @@ const drawCurrentScore = () => {
 }
 
 const drawHighScore = () => {
-    let highScore = localStorage.getItem('highScore');
+    let difficulty = localStorage.getItem('difficulty');
+    if (!difficulty) difficulty = '8';
+    let highScore = localStorage.getItem(`${difficulty}highScore`);
     if (highScore === null) {
-        localStorage.setItem('highScore', '0');
+        localStorage.setItem(`${difficulty}highScore`, '0');
     }
     if (score > Number(highScore)) {
         highScoreElem.innerHTML = String(score);
-        localStorage.setItem('highScore', JSON.stringify(score));
+        localStorage.setItem(`${difficulty}highScore`, JSON.stringify(score));
     } else {
         highScoreElem.innerHTML = highScore;
     }
