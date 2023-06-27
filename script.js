@@ -21,8 +21,18 @@ let food = {
     y: 5
 };
 
-const spriteImg = new Image();
-spriteImg.src = 'images/blue-snake.png';
+const changeColor = () => {
+    let color = localStorage.getItem('color');
+    if (color === null) {
+        localStorage.setItem('color', 'blue');
+        color = 'blue';
+    }
+    const spriteImg = new Image();
+    spriteImg.src = `images/${color}-snake.png`;
+
+    return spriteImg;
+}
+let spriteImg = changeColor();
 
 const gameOverSound = new Audio('sounds/game-over.mp3');
 const biteSound = new Audio('sounds/bite.mp3');
@@ -31,7 +41,6 @@ const snakeParts = [];
 let tailLength = 2;
 
 let score = 0;
-let highScore = 2;
 let currentScoreElem = document.getElementById('current_score');
 let highScoreElem = document.getElementById('high_score');
 
@@ -238,10 +247,15 @@ const openModal = () => {
 const saveChanges = () => {
     let button = document.getElementById('save');
     let difficultyElem = document.getElementById('difficulty');
+    let colorElem = document.getElementById('color');
     button.onclick = () => {
         let difficulty = difficultyElem.value;
         localStorage.setItem('difficulty', difficulty);
         speed = parseInt(difficulty);
+
+        let color = colorElem.value;
+        localStorage.setItem('color', color);
+        spriteImg = changeColor();
     }
 }
 
@@ -254,4 +268,8 @@ document.addEventListener('DOMContentLoaded', function(){
     let difficulty = localStorage.getItem('difficulty');
     let difficultyElem = document.getElementById('difficulty');
     difficultyElem.value = difficulty;
+
+    let color = localStorage.getItem('color');
+    let colorElem = document.getElementById('color');
+    colorElem.value = color;
 });
