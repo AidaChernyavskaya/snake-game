@@ -172,8 +172,25 @@ const changeSnakePosition = () => {
 const checkCollision = (max) => {
     if (food.x === headX && food.y === headY){
         biteSound.play();
-        food.x = Math.floor(Math.random() * max);
-        food.y = Math.floor(Math.random() * max);
+
+        let valid = false;
+        while (!valid){
+            let x = Math.floor(Math.random() * max);
+            let y = Math.floor(Math.random() * max);
+            let overlap = false;
+            for (let i = 0; i < snakeParts.length; i++){
+                if (x === snakeParts[i].x && y === snakeParts[i].y){
+                    overlap = true;
+                    break;
+                }
+            }
+            if (!overlap){
+                valid = true;
+                food.x = x;
+                food.y = y;
+            }
+        }
+
         tailLength++;
         score++;
     }
