@@ -44,6 +44,7 @@ canvas{
     cursor: pointer;
     padding: .3rem;
     background: none;
+    user-select: none;
 }
 
 .button__icon{

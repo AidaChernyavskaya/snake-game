@@ -8,7 +8,7 @@ if (!speed) {
 let tileCount = 30;
 let tileSize = canvas.clientWidth/tileCount + 10;
 let xDirection = 0;
-let yDirection = -1;
+let yDirection = 0;
 let direction = '';
 
 let headX = 10;
@@ -102,7 +102,7 @@ const drawSnake = () => {
                     context.drawImage(spriteImg, 192, 64, 64, 64, headX * tileCount, headY * tileCount, tileSize, tileSize);
                     break;
                 default:
-                    context.drawImage(spriteImg, 192, 0, 64, 64, headX * tileCount, headY * tileCount, tileSize, tileSize);
+                    context.drawImage(spriteImg, 192, 64, 64, 64, headX * tileCount, headY * tileCount, tileSize, tileSize);
             }
         } else{
             //body
